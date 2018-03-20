@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1521586914 source:c:\users\zuza\desktop\zbiory_slow\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	"klasy.h"
+
+1521586728 source:c:\users\zuza\desktop\zbiory_slow\klasy.cpp
+	<iostream>
+	<string>
+	<vector>
+	"klasy.h"
+
+1521587047 c:\users\zuza\desktop\zbiory_slow\klasy.h
+	<iostream>
+	<string>
+	<vector>
+
