@@ -11,19 +11,37 @@ using namespace std;
         words.clear();
     }
 
+    void Set::createSet()
+    {
+        int n;
+        string s;
+        cout << "Liczba elementow zbioru : ";
+        cin >> n;
+        cout << "Elementy zbioru :" << endl;
+        for( int i = 0; i < n; i++ )
+        {
+            cin >> s;
+            addWord( s );
+        }
+    }
+
     void Set::addWord( string s )
     {
         words.push_back( new Word(s) );
     }
 
-    void Set::deleteWord( string s )
+    void Set::deleteWord(  )
     {
+        string s;
+        cout << "Usun : ";
+        cin >> s;
         int temp = 1;
-        for( size_t i = 0; i < words.size(); i++ ) //sprawdzic czy nie pomija kiedy kilka takich samych słów pod rząd
+        for( size_t i = 0; i < words.size(); i++ )
         {
             if( words[i]->getWord() == s )
             {
                 words.erase( words.begin()+i );
+                i--;
                 temp = 0;
             }
         }
@@ -48,7 +66,7 @@ using namespace std;
                 if( words[j]->getWord() == temp )
                 {
                     words.erase( words.begin()+j );
-                    j=i;
+                    j--;
                 }
             }
         }
@@ -99,21 +117,27 @@ using namespace std;
             c.addWord( a.words[i]->getWord() );
             e.addWord( a.words[i]->getWord() );
         }
+
         return c-(e*d);
     }
 
     Set Set::operator*( const Set &a )
     {
         Set c;
+        int temp = 0;
         for( size_t i = 0; i < words.size(); i++ )
         {
             for( size_t j = 0; j < a.words.size(); j++ )
             {
                 if( words[i]->getWord() == a.words[j]->getWord() )
+                {
                     c.addWord( words[i]->getWord() );
+                    temp = 1;
+                }
             }
         }
-        c.deleteRepeated();
+        if( temp )
+            c.deleteRepeated();
         return c;
     }
 
@@ -124,6 +148,8 @@ using namespace std;
         {
             c.addWord( words[i]->getWord() );
         }
+
+        if(a.words.size()==0) return c;
 
         for( size_t i = 0; i < a.words.size(); i++ )
         {

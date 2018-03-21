@@ -16,3 +16,20 @@
 	<string>
 	<vector>
 
+1521658280 source:c:\users\zuza\desktop\projekt_1\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	"klasy.h"
+
+1521655760 c:\users\zuza\desktop\projekt_1\klasy.h
+	<iostream>
+	<string>
+	<vector>
+
+1521658749 source:c:\users\zuza\desktop\projekt_1\klasy.cpp
+	<iostream>
+	<string>
+	<vector>
+	"klasy.h"
+

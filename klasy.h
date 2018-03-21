@@ -18,8 +18,9 @@ vector<Word*> words;
 public:
     Set(){};
     ~Set();
+    void createSet();
     void addWord( string s );
-    void deleteWord( string s );
+    void deleteWord();
     void display();
     void deleteRepeated();
     void shortestWord();
