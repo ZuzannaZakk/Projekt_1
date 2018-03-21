@@ -20,6 +20,10 @@ int main ( )
     (a+b).display();
     cout << "Iloczyn : ";
     (a*b).display();
+    cout << "Roznica a\\b: ";
+    (a-b).display();
+    cout << "Roznica b\\a: ";
+    (b-a).display();
 
     return 0;
 }

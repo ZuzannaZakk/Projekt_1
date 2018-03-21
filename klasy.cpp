@@ -13,15 +13,32 @@ using namespace std;
 
     void Set::createSet()
     {
-        int n;
+        int n, temp = 1;
         string s;
         cout << "Liczba elementow zbioru : ";
-        cin >> n;
+        while( !(cin>>n) )
+        {
+            cin.clear();
+            cin.sync();
+            cout << "Podaj poprawna liczbe elementow zbioru : " << endl;
+        }
         cout << "Elementy zbioru :" << endl;
         for( int i = 0; i < n; i++ )
         {
+            temp = 1;
             cin >> s;
-            addWord( s );
+            for( size_t j = 0; j < s.length(); j++ )
+            {
+                if( isdigit( s[j] ) )
+                {
+                    cout << "To nie slowo !!! Wprowadz element ponownie" << endl;
+                    temp = 0;
+                    break;
+                }
+            }
+            if( temp )
+                addWord( s );
+                else i--;
         }
     }
 
@@ -30,8 +47,13 @@ using namespace std;
         words.push_back( new Word(s) );
     }
 
-    void Set::deleteWord(  )
+    void Set::deleteWord()
     {
+        if( words.size() == 0 )
+        {
+            cout << "Nie mozna nic usunac, brak elementow w zbiorze" << endl;
+            return;
+        }
         string s;
         cout << "Usun : ";
         cin >> s;
@@ -57,6 +79,10 @@ using namespace std;
 
     void Set::deleteRepeated()
     {
+        if( words.size() == 0 )
+        {
+            return;
+        }
         string temp = words[0]->getWord();
         for( size_t i = 0; i < words.size(); i++ )
         {
@@ -74,6 +100,10 @@ using namespace std;
 
     void Set::shortestWord()
     {
+        if( words.size() == 0 )
+        {
+            return;
+        }
         string temp = words[0]->getWord();
         for( size_t i = 1; i < words.size(); i++ )
         {
@@ -85,6 +115,10 @@ using namespace std;
 
     void Set::longestWord()
     {
+        if( words.size() == 0 )
+        {
+            return;
+        }
         string temp = words[0]->getWord();
         for( size_t i = 1; i < words.size(); i++ )
         {
@@ -104,7 +138,7 @@ using namespace std;
         this->s = s;
     }
 
-    Set Set::operator+( const Set &a )
+    Set Set::operator+( const Set &a ) //suma zbiorow
     {
         Set c;
         for( size_t i = 0; i < words.size(); i++ )
@@ -119,7 +153,7 @@ using namespace std;
         return c;
     }
 
-    Set Set::operator*( const Set &a )
+    Set Set::operator*( const Set &a ) //iloczyn zbiorow
     {
         Set c;
         int temp = 0;
@@ -139,7 +173,7 @@ using namespace std;
         return c;
     }
 
-    Set Set::operator-( const Set &a )
+    Set Set::operator-( const Set &a ) //roznica zbirow
     {
         Set c;
         for( size_t i = 0; i < words.size(); i++ )

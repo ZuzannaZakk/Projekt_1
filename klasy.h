@@ -25,9 +25,9 @@ public:
     void deleteRepeated();
     void shortestWord();
     void longestWord();
-    Set operator+( const Set &a );
-    Set operator*( const Set &a );
-    Set operator-( const Set &a );
+    Set operator+( const Set &a ); //suma
+    Set operator*( const Set &a ); //iloczyn
+    Set operator-( const Set &a ); //roznica
 };
 
 #endif // klasy_h
