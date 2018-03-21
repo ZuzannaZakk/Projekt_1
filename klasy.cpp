@@ -106,19 +106,17 @@ using namespace std;
 
     Set Set::operator+( const Set &a )
     {
-        Set c, d, e;
+        Set c;
         for( size_t i = 0; i < words.size(); i++ )
         {
             c.addWord( words[i]->getWord() );
-            d.addWord( words[i]->getWord() );
         }
         for( size_t i = 0; i < a.words.size(); i++ )
         {
             c.addWord( a.words[i]->getWord() );
-            e.addWord( a.words[i]->getWord() );
         }
-
-        return c-(e*d);
+        c.deleteRepeated();
+        return c;
     }
 
     Set Set::operator*( const Set &a )

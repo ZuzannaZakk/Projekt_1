@@ -7,16 +7,19 @@ using namespace std;
 int main ( )
 {
     Set a, b;
+    cout << "Zbior a" << endl;
     a.createSet();
+    a.shortestWord();
+    a.longestWord();
+    cout << "Zbior b" << endl;
     b.createSet();
-
+    b.shortestWord();
+    b.longestWord();
+    cout << "Dzialania na zbiorach" << endl;
     cout << "Suma : ";
     (a+b).display();
     cout << "Iloczyn : ";
     (a*b).display();
-    //a.deleteRepeated();
-    a.display();
-    b.display();
 
     return 0;
 }
