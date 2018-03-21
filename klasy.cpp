@@ -19,7 +19,7 @@ using namespace std;
     void Set::deleteWord( string s )
     {
         int temp = 1;
-        for( size_t i = 0; i < words.size(); i++ )
+        for( size_t i = 0; i < words.size(); i++ ) //sprawdzic czy nie pomija kiedy kilka takich samych słów pod rząd
         {
             if( words[i]->getWord() == s )
             {
