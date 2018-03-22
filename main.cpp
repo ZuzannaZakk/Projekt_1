@@ -2,10 +2,13 @@
 #include <string>
 #include <vector>
 #include "klasy.h"
+#include "test.h"
 using namespace std;
 
 int main ( )
 {
+    TestSet t;
+    t.addWordTest();
     Set a, b;
     cout << "Zbior a" << endl;
     a.createSet();

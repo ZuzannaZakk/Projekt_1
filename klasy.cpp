@@ -2,13 +2,12 @@
 #include <string>
 #include <vector>
 #include "klasy.h"
+#include "test.h"
 using namespace std;
 
-    Set::~Set()
+    int Set::getsizeofSet()
     {
-        for( size_t i = 0; i < words.size(); i++ )
-            delete words[i];
-        words.clear();
+        return this->sizeofSet;
     }
 
     void Set::createSet()
@@ -40,11 +39,13 @@ using namespace std;
                 addWord( s );
                 else i--;
         }
+        this->sizeofSet=words.size();
     }
 
     void Set::addWord( string s )
     {
         words.push_back( new Word(s) );
+        this->sizeofSet=words.size();
     }
 
     void Set::deleteWord()
@@ -128,14 +129,27 @@ using namespace std;
         cout << "Najdluzsze slowo w zbiorze : " << temp << endl;
     }
 
+    Set::~Set()
+    {
+        for( size_t i = 0; i < words.size(); i++ )
+            delete words[i];
+        words.clear();
+    }
+
     string Set::Word::getWord()
     {
         return this->s;
     }
 
+    int Set::Word::getLength()
+    {
+        return this->l;
+    }
+
     Set::Word::Word( string s )
     {
         this->s = s;
+        this->l = s.length();
     }
 
     Set Set::operator+( const Set &a ) //suma zbiorow
@@ -196,4 +210,5 @@ using namespace std;
         }
         return c;
     }
+
 
