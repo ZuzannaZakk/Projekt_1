@@ -3,11 +3,12 @@
 #include <vector>
 #include "klasy.h"
 #include "test.h"
+#include "menu.h"
 using namespace std;
 
-int main ( )
+int main ()
 {
-    TestSet t;
+    /*TestSet t;
     t.addWordTest();
     Set a, b;
     cout << "Zbior a" << endl;
@@ -26,7 +27,10 @@ int main ( )
     cout << "Roznica a\\b: ";
     (a-b).display();
     cout << "Roznica b\\a: ";
-    (b-a).display();
+    (b-a).display();*/
+
+    /*Menu m;
+    m.run();*/
 
     return 0;
 }

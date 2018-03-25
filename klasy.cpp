@@ -3,6 +3,7 @@
 #include <vector>
 #include "klasy.h"
 #include "test.h"
+#include "menu.h"
 using namespace std;
 
     int Set::getsizeofSet()
@@ -18,7 +19,8 @@ using namespace std;
         while( !(cin>>n) )
         {
             cin.clear();
-            cin.sync();
+            //cin.sync();
+            cin.ignore( 1000 , '\n' );
             cout << "Podaj poprawna liczbe elementow zbioru : " << endl;
         }
         cout << "Elementy zbioru :" << endl;
@@ -48,16 +50,16 @@ using namespace std;
         this->sizeofSet=words.size();
     }
 
-    void Set::deleteWord()
+    void Set::deleteWord( string s )
     {
         if( words.size() == 0 )
         {
             cout << "Nie mozna nic usunac, brak elementow w zbiorze" << endl;
             return;
         }
-        string s;
-        cout << "Usun : ";
-        cin >> s;
+        /*string s;
+        cout << "Usun (podaj slowo) : ";
+        cin >> s;*/
         int temp = 1;
         for( size_t i = 0; i < words.size(); i++ )
         {
@@ -69,6 +71,7 @@ using namespace std;
             }
         }
         if( temp ) cout << "Nie ma takiego slowa w zbiorze !!!" << endl;
+        this->sizeofSet=words.size();
     }
 
     void Set::display()
@@ -97,13 +100,14 @@ using namespace std;
                 }
             }
         }
+        this->sizeofSet=words.size();
     }
 
-    void Set::shortestWord()
+    string Set::shortestWord()
     {
         if( words.size() == 0 )
         {
-            return;
+            return 0;
         }
         string temp = words[0]->getWord();
         for( size_t i = 1; i < words.size(); i++ )
@@ -111,14 +115,15 @@ using namespace std;
             if( (words[i]->getWord()).length() < temp.length() )
                 temp = words[i]->getWord();
         }
-        cout << "Najkrotsze slowo w zbiorze : " << temp << endl;
+        //cout << "Najkrotsze slowo w zbiorze : " << temp << endl;
+        return temp;
     }
 
-    void Set::longestWord()
+    string Set::longestWord()
     {
         if( words.size() == 0 )
         {
-            return;
+            return 0;
         }
         string temp = words[0]->getWord();
         for( size_t i = 1; i < words.size(); i++ )
@@ -126,7 +131,8 @@ using namespace std;
             if( (words[i]->getWord()).length() > temp.length() )
                 temp = words[i]->getWord();
         }
-        cout << "Najdluzsze slowo w zbiorze : " << temp << endl;
+        //cout << "Najdluzsze slowo w zbiorze : " << temp << endl;
+        return temp;
     }
 
     Set::~Set()
@@ -204,7 +210,8 @@ using namespace std;
                 if( a.words[i]->getWord() == c.words[j]->getWord() )
                 {
                     c.words.erase( c.words.begin()+j );
-                    break;
+                    j--;
+                    //break;
                 }
             }
         }

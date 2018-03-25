@@ -21,11 +21,11 @@ public:
     int getsizeofSet();
     void createSet();
     void addWord( string s );
-    void deleteWord();
+    void deleteWord( string s );
     void display();
     void deleteRepeated();
-    void shortestWord();
-    void longestWord();
+    string shortestWord();
+    string longestWord();
     Set operator+( const Set &a ); //suma
     Set operator*( const Set &a ); //iloczyn
     Set operator-( const Set &a ); //roznica

@@ -16,28 +16,41 @@
 	<string>
 	<vector>
 
-1521709897 source:c:\users\zuza\desktop\projekt_1\main.cpp
+1522010593 source:c:\users\zuza\desktop\projekt_1\main.cpp
 	<iostream>
 	<string>
 	<vector>
 	"klasy.h"
 	"test.h"
+	"menu.h"
 
-1521709897 c:\users\zuza\desktop\projekt_1\klasy.h
+1522010295 c:\users\zuza\desktop\projekt_1\klasy.h
 
-1521710061 source:c:\users\zuza\desktop\projekt_1\klasy.cpp
+1522010422 source:c:\users\zuza\desktop\projekt_1\klasy.cpp
 	<iostream>
 	<string>
 	<vector>
 	"klasy.h"
 	"test.h"
+	"menu.h"
 
-1521709897 c:\users\zuza\desktop\projekt_1\test.h
+1521713497 c:\users\zuza\desktop\projekt_1\test.h
 
-1521709753 source:c:\users\zuza\desktop\projekt_1\test.cpp
+1522010593 source:c:\users\zuza\desktop\projekt_1\test.cpp
 	<iostream>
 	<string>
 	<vector>
 	"klasy.h"
 	"test.h"
+	"menu.h"
+
+1522004560 c:\users\zuza\desktop\projekt_1\menu.h
+
+1522010545 source:c:\users\zuza\desktop\projekt_1\menu.cpp
+	<iostream>
+	<string>
+	<vector>
+	"klasy.h"
+	"test.h"
+	"menu.h"
 
