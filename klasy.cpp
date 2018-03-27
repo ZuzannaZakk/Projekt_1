@@ -81,6 +81,11 @@ using namespace std;
         cout << endl;
     }
 
+    string Set::gW( int i )
+    {
+        return words[i]->getWord();
+    }
+
     void Set::deleteRepeated()
     {
         if( words.size() == 0 )

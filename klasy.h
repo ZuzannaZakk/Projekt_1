@@ -13,9 +13,9 @@ class Set
             string getWord();
             int getLength();
     };
-int sizeofSet;
 vector<Word*> words;
 public:
+    int sizeofSet;
     Set(){this->sizeofSet=words.size();};
     ~Set();
     int getsizeofSet();
@@ -26,6 +26,7 @@ public:
     void deleteRepeated();
     string shortestWord();
     string longestWord();
+    string gW( int i );
     Set operator+( const Set &a ); //suma
     Set operator*( const Set &a ); //iloczyn
     Set operator-( const Set &a ); //roznica

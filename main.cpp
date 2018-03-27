@@ -29,8 +29,8 @@ int main ()
     cout << "Roznica b\\a: ";
     (b-a).display();*/
 
-    /*Menu m;
-    m.run();*/
+    Menu m;
+    m.run();
 
     return 0;
 }

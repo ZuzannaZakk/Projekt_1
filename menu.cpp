@@ -103,7 +103,7 @@ void Menu::run()
                         break;
                     }
                     int i;
-                    cout << "Z ktorego zbioru chcesz usunac slowo ? (podaj nr)" << endl;
+                    cout << "Z ktorego zbioru chcesz usunac powtarzajace sie slowa ? (podaj nr)" << endl;
                     cin >> i;
                     if( i >= n )
                     {
@@ -154,7 +154,16 @@ void Menu::run()
                     int i, j;
                     cout << "Podaj 2 numery zbiorow" << endl;
                     cin >> i >> j;
-                    //(sets[i]+sets[j])->display();
+                    Set a, b;
+                    for( int x = 0; x < sets[i]->sizeofSet; x++ )
+                    {
+                        a.addWord( sets[i]->gW(x) );
+                    }
+                    for( int x = 0; x < sets[j]->sizeofSet; x++ )
+                    {
+                        b.addWord( sets[j]->gW(x) );
+                    }
+                   (a+b).display();
                     break;
                 }
             case 8:

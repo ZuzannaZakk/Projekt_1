@@ -5,6 +5,8 @@ using namespace std;
 class TestSet
 {
 public:
+    TestSet(){};
+    ~TestSet(){};
     void addWordTest();
     void createSetTest();
     void deleteWordTest();
