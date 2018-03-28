@@ -1,67 +1,102 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include<fstream>
 #include "klasy.h"
 #include "test.h"
 #include "menu.h"
 using namespace std;
 
-void TestSet::addWordTest()
+int TestSet::addWordTest()
 {
-    Set a;
-    a.addWord("TEST");
-    if( a.getsizeofSet() == 0 ) cout << "Nie udalo sie dodac slowa" << endl;
-}
-void TestSet::createSetTest()
-{
-
-}
-void TestSet::deleteWordTest()
-{
-    Set a;
-    a.addWord("JEDEN");
-    a.addWord("DWA");
-    a.deleteWord("DWA");
-    if( a.getsizeofSet() != 1 ) cout << "Nie udalo sie usunac slowa" << endl;
-}
-void TestSet::deleteRepeatedTest()
-{
-    Set a;
-    for( int i = 0; i < 10; i++ )
+    ifstream data1("zbior1.txt");
+    ifstream data2("zbior2.txt");
+    if( !data1 || !data2 )
     {
-        a.addWord("TEST");
+    cout<<"Blad wczytywania danych z pliku !!!";
+    return 0;
     }
+    string s;
+    while( !data1.eof() )
+    {
+        data1 >> s;
+        a.addWord(s);
+    }
+    while( !data2.eof() )
+    {
+        data2 >> s;
+        b.addWord(s);
+    }
+    data1.close();
+    data2.close();
+    if( a.getsizeofSet() != 54 || b.getsizeofSet() != 19 )
+    {
+        cout << "Nie udalo sie dodac slow" << endl;
+        return 0;
+    }
+    else return 1;
+}
+
+int TestSet::deleteWordTest()
+{
+    b.deleteWord("jeden");
+    if( b.getsizeofSet() != 17 )
+    {
+        cout << "Nie udalo sie usunac slowa" << endl;
+        return 0;
+    }
+    else return 1;
+}
+int TestSet::deleteRepeatedTest()
+{
     a.deleteRepeated();
-    if( a.getsizeofSet() != 1 ) cout << "Nie udalo sie usunac wszystkich slow ktore sie powtarzaja" << endl;
+    if( a.getsizeofSet() != 1 )
+    {
+        cout << "Nie udalo sie usunac wszystkich slow ktore sie powtarzaja" << endl;
+        return 0;
+    }
+    else return 1;
 }
-void TestSet::shortestWordTest()
+int TestSet::shortestWordTest()
 {
-    Set a;
-    a.addWord("PIERWSZY");
-    a.addWord("DRUGI");
-    a.addWord("TRZECI");
-    a.addWord("CZWARTY");
-    if( a.shortestWord() != "DRUGI" ) cout << "BLAD" << endl;
+    if( b.shortestWord() != "dwa" )
+    {
+        cout << "BLAD (znajdowanie najkrotszego slowa)" << endl;
+        return 0;
+    }
+    else return 1;
 }
-void TestSet::longestWordTest()
+int TestSet::longestWordTest()
 {
-    Set a;
-    a.addWord("PIERWSZY");
-    a.addWord("DRUGI");
-    a.addWord("TRZECI");
-    a.addWord("CZWARTY");
-    if( a.longestWord() != "PIERWSZY" ) cout << "BLAD" << endl;
+    if( b.longestWord() != "czternascie" )
+    {
+        cout << "BLAD (znajdowanie najdluzszego slowa)" << endl;
+        return 0;
+    }
+    else return 1;
 }
-void TestSet::sumTest()
+int TestSet::sumTest()
 {
+    if( (a+b).getsizeofSet() != 15 )
+    {
+        cout << "BLAD (suma zbiorow)" << endl;
+        return 0;
+    }
+    else return 1;
+}
+int TestSet::intersectionTest()
+{
+    if( (a*b).getsizeofSet() != 1 )
+    {
+        cout << "BLAD (iloraz zbiorow)" << endl;
+        return 0;
+    }
+    else return 1;
+}
 
-}
-void TestSet::intersectionTest()
+void TestSet::testAll()
 {
-
-}
-void TestSet::differenceTest()
-{
-
+    if( ( addWordTest() && sumTest() ) && intersectionTest() && ( longestWordTest() && shortestWordTest() )
+       && ( deleteRepeatedTest() && deleteWordTest() ) ) { cout << "Wszystkie testy zaliczone" << endl; }
 }
 

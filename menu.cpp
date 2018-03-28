@@ -19,13 +19,12 @@ void Menu::showMenu()
     cout << "6 - Pokaz najdluzsze slowo w zbiorze" << endl;
     cout << "7 - Suma zbiorow" << endl;
     cout << "8 - Iloczyn zbiorow" << endl;
-    cout << "9 - Roznica zbiorow" << endl;
-    cout << "10 - Pokaz elementy zbioru" << endl;
+    cout << "9 - Pokaz elementy zbioru" << endl;
+    cout << "10 - Uruchom testy" << endl;
     cout << "11 - Zamknij" << endl;
 }
 void Menu::run()
 {
-    //int choice;
     int temp = 0, n;
     showMenu();
     cin >> choice;
@@ -37,14 +36,13 @@ void Menu::run()
                 {
                     if( temp )
                     {
-                        cout << "Podczas jednej sesji mozna tworzyc zbiory tylko raz" << endl;
+                        cout << "Podczas jednej sesji mozna tworzyc zbiory tylko raz !!!" << endl;
                         break;
                     }
                     temp = 1;
-                    //int n;
                     cout << "Ile zbiorow stworzyc ?" << endl;
                     cin >> n;
-                    //Set *sets = new Set[n];
+
                     for( int j = 0; j < n; j++ )
                     {
                         sets.push_back( new Set() );
@@ -62,7 +60,7 @@ void Menu::run()
                     }
                     int i;
                     string s;
-                    cout << "Do ktorego zbioru chcesz dodac slowo ? (podaj nr)" << endl;
+                    cout << "Do ktorego zbioru chcesz dodac slowo ? (podaj nr od 0 do " << n-1 << ")" << endl;
                     cin >> i;
                     if( i >= n )
                     {
@@ -83,7 +81,7 @@ void Menu::run()
                     }
                     int i;
                     string s;
-                    cout << "Z ktorego zbioru chcesz usunac slowo ? (podaj nr)" << endl;
+                    cout << "Z ktorego zbioru chcesz usunac slowo ? (podaj nr od 0 do " << n-1 << ")" << endl;
                     cin >> i;
                     if( i >= n )
                     {
@@ -103,7 +101,7 @@ void Menu::run()
                         break;
                     }
                     int i;
-                    cout << "Z ktorego zbioru chcesz usunac powtarzajace sie slowa ? (podaj nr)" << endl;
+                    cout << "Z ktorego zbioru chcesz usunac powtarzajace sie slowa ? (podaj nr od 0 do " << n-1 << ")" << endl;
                     cin >> i;
                     if( i >= n )
                     {
@@ -121,7 +119,7 @@ void Menu::run()
                         break;
                     }
                     int i;
-                    cout << "Podaj nr zbioru" << endl;
+                    cout << "Podaj nr zbioru od 0 do " << n-1 << endl;
                     cin >> i;
                     if( i >= n )
                     {
@@ -139,7 +137,7 @@ void Menu::run()
                         break;
                     }
                     int i;
-                    cout << "Podaj nr zbioru" << endl;
+                    cout << "Podaj nr zbioru od 0 do " << n-1 << endl;
                     cin >> i;
                     if( i >= n )
                     {
@@ -151,33 +149,61 @@ void Menu::run()
                 }
             case 7:
                 {
+                    if( !temp )
+                    {
+                        cout << "Nie zostal utworzony zaden zbior !!!" << endl;
+                        break;
+                    }
+                    if( n < 2 ) { cout << "Nie utworzono wystarczajacej ilosci zbiorow" << endl; }
                     int i, j;
-                    cout << "Podaj 2 numery zbiorow" << endl;
+                    cout << "Podaj 2 numery zbiorow z przedzialu [0 ; " << n-1 << "]" << endl;
                     cin >> i >> j;
+                    if( i >= n || j >= n ){ cout << "Takie zbiory nie istnieja" << endl; break;}
                     Set a, b;
                     for( int x = 0; x < sets[i]->sizeofSet; x++ )
                     {
-                        a.addWord( sets[i]->gW(x) );
+                        a.addWord( sets[i]->getWord(x) );
                     }
                     for( int x = 0; x < sets[j]->sizeofSet; x++ )
                     {
-                        b.addWord( sets[j]->gW(x) );
+                        b.addWord( sets[j]->getWord(x) );
                     }
                    (a+b).display();
                     break;
                 }
             case 8:
                 {
+                    if( !temp )
+                    {
+                        cout << "Nie zostal utworzony zaden zbior !!!" << endl;
+                        break;
+                    }
+                    if( n < 2 ) { cout << "Nie utworzono wystarczajacej ilosci zbiorow" << endl; }
                     int i, j;
-                    cout << "Podaj 2 numery zbiorow" << endl;
+                    cout << "Podaj 2 numery zbiorow z przedzialu [0 ; " << n-1 << "]" << endl;
                     cin >> i >> j;
-
+                    if( i >= n || j >= n ){ cout << "Takie zbiory nie istnieja" << endl; break;}
+                    Set a, b;
+                    for( int x = 0; x < sets[i]->sizeofSet; x++ )
+                    {
+                        a.addWord( sets[i]->getWord(x) );
+                    }
+                    for( int x = 0; x < sets[j]->sizeofSet; x++ )
+                    {
+                        b.addWord( sets[j]->getWord(x) );
+                    }
+                   (a*b).display();
                     break;
                 }
-            case 10:
+            case 9:
                 {
+                    if( !temp )
+                    {
+                        cout << "Nie zostal utworzony zaden zbior !!!" << endl;
+                        break;
+                    }
                     int i;
-                    cout << "Ktory zbior chcesz zobaczyc ? (podaj nr)" << endl;
+                    cout << "Ktory zbior chcesz zobaczyc ? (podaj nr do 0 do " << n-1 << ")" << endl;
                     cin >> i;
                     if( i >= n )
                     {
@@ -187,11 +213,18 @@ void Menu::run()
                     sets[i]->display();
                     break;
                 }
+            case 10:
+                {
+                    TestSet test;
+                    test.testAll();
+                    break;
+                }
             default:
                 cout << "Blad !!!" << endl;
                 break;
          }
         showMenu();
         cin >> choice;
+        system( "cls" );
     }
 }

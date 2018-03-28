@@ -57,9 +57,6 @@ using namespace std;
             cout << "Nie mozna nic usunac, brak elementow w zbiorze" << endl;
             return;
         }
-        /*string s;
-        cout << "Usun (podaj slowo) : ";
-        cin >> s;*/
         int temp = 1;
         for( size_t i = 0; i < words.size(); i++ )
         {
@@ -81,7 +78,7 @@ using namespace std;
         cout << endl;
     }
 
-    string Set::gW( int i )
+    string Set::getWord( int i )
     {
         return words[i]->getWord();
     }
@@ -120,7 +117,6 @@ using namespace std;
             if( (words[i]->getWord()).length() < temp.length() )
                 temp = words[i]->getWord();
         }
-        //cout << "Najkrotsze slowo w zbiorze : " << temp << endl;
         return temp;
     }
 
@@ -136,7 +132,6 @@ using namespace std;
             if( (words[i]->getWord()).length() > temp.length() )
                 temp = words[i]->getWord();
         }
-        //cout << "Najdluzsze slowo w zbiorze : " << temp << endl;
         return temp;
     }
 
@@ -198,7 +193,7 @@ using namespace std;
         return c;
     }
 
-    Set Set::operator-( const Set &a ) //roznica zbirow
+    /*Set Set::operator-( const Set &a ) //roznica zbirow
     {
         Set c;
         for( size_t i = 0; i < words.size(); i++ )
@@ -216,11 +211,11 @@ using namespace std;
                 {
                     c.words.erase( c.words.begin()+j );
                     j--;
-                    //break;
                 }
             }
         }
+        this->sizeofSet=words.size();
         return c;
-    }
+    }*/
 
 

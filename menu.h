@@ -8,9 +8,9 @@ class Menu
    vector<Set*> sets;
 public:
     Menu(){};
-    ~Menu(){};
     void showMenu();
     void run();
+    ~Menu(){};
 };
 
 #endif // menu_h

@@ -4,18 +4,18 @@ using namespace std;
 
 class TestSet
 {
+    Set a , b;
 public:
     TestSet(){};
+    int addWordTest();
+    int deleteWordTest();
+    int deleteRepeatedTest();
+    int shortestWordTest();
+    int longestWordTest();
+    int sumTest();
+    int intersectionTest();
+    void testAll();
     ~TestSet(){};
-    void addWordTest();
-    void createSetTest();
-    void deleteWordTest();
-    void deleteRepeatedTest();
-    void shortestWordTest();
-    void longestWordTest();
-    void sumTest();
-    void intersectionTest();
-    void differenceTest();
 };
 
 #endif // test_h
